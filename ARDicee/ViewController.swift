@@ -81,14 +81,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         hitResult.worldTransform.columns.3.z)
         
                     sceneView.scene.rootNode.addChildNode(diceNode)
-        }
-                        
-            }
-            
-            if !results.isEmpty {
-                print("Touched on Plane")
-            }else{
-                print("Touch Somewhere else")
+                    
+                    let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+                    
+                    let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi/2)
+                    
+                    diceNode.runAction(
+                        SCNAction.rotateBy(
+                            x: CGFloat(randomX * 5),  // *5 increase the no. of spin
+                            y: 0,
+                            z: CGFloat(randomZ * 5),  // *5 increase the no. of spin
+                            duration: 0.5))
+                    
+                 }
             }
         }
     }
